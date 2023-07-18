@@ -1,6 +1,6 @@
 const Started = ()=>{
-    return(
-        <h3>Stared </h3>
-    );
+   
+    return <div>Stared </div>
+    
 }
 export default Started;

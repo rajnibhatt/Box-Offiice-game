@@ -4,7 +4,7 @@ export default function AppTitle(props){
         subTitle ="You can find your favourite movie here"} 
         = props;
     return(
-<div>
+<div className="container"> 
     <h1>{title}</h1>
     <p>{subTitle}</p>
 </div>
