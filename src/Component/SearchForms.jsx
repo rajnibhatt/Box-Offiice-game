@@ -34,8 +34,8 @@ const SearchForms = ({onSearch}) => {
 
              <label>
              Actor
-             <input type="radio" name="search-option" value= "Actor"
-             checked = {searchOption === 'Actor'}
+             <input type="radio" name="search-option" value= "actors"
+             checked = {searchOption === 'actors'}
              onChange={onRadioChange}>
              </input>
              </label>
