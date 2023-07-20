@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery} from '@tanstack/react-query';
-import { useEffect,useState } from "react";
 import { getShowById } from "../Api/Tvmaze";
 import ShowMainData from "../Component/shows/ShowMainData";
 import Details from "../Component/shows/Details";
@@ -31,6 +30,10 @@ const {data:showData,error:showError} = useQuery({
     queryKey:['Show', showId],
     queryFn: () => getShowById(showId),
 });
+// const navigateTo = useNavigate();
+// const onGoBack = ()=>{
+//     navigateTo('/');
+// }
 //const {showData,showError} = useShowById(showId);
 if(showError){
     return <div>we have an error: {showError.message}</div>;
@@ -38,6 +41,8 @@ if(showError){
 if(showData){
     return (
         <div>
+            <Link to={"/"}>Go Back To Start</Link>
+            {/* <button type="button" onClick={onGoBack}>Go Back</button> */}
         <ShowMainData
         image={showData.image}
         name={showData.name}
