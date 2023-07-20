@@ -1,6 +1,7 @@
+import { useStaredShows } from "../librarycustom/useStaredShow";
 const Started = ()=>{
-   
-    return <div>Stared </div>
+    const [staredShow] = useStaredShows( );
+    return <div>Stared page, stared{staredShow.length}</div>
     
-}
+};
 export default Started;

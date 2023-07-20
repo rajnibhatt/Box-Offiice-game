@@ -6,7 +6,7 @@ to: "/",
     },
     {
 text: "starred",
-to:"/starred"
+to:"/stared"
     }
 ]
 const Navs = () =>{
