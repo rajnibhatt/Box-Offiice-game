@@ -5,6 +5,7 @@ import ShowMainData from "../Component/shows/ShowMainData";
 import Details from "../Component/shows/Details";
 import Seasons from "../Component/shows/Seasons";
 import Cast from "../Component/shows/Cast";
+import UseReducer from "../UseReducer";
 // const useShowById = showId =>{
 //     const [showData,setShowData] = useState(null);
 //     const [showError,setShowError] = useState(null);
@@ -41,6 +42,7 @@ if(showError){
 if(showData){
     return (
         <div>
+            <UseReducer></UseReducer>
             <Link to={"/"}>Go Back To Start</Link>
             {/* <button type="button" onClick={onGoBack}>Go Back</button> */}
         <ShowMainData
