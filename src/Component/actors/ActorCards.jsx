@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
+import { SearchCard, SearchImgWrapper } from "../../Common/SearchCard";
 
 const ActorCards = ({name,image,gender,country,birthday,deathday}) => {
 
    
     return (
-    <div>
-        <div>
+    <SearchCard>
+        <SearchImgWrapper>
             <img src={image} alt={name}/>
-        </div>
+        </SearchImgWrapper>
             <h1>{name} {!!gender && `(${gender})`}</h1>
             <p>{country ? `comes from ${country}`:"no country Known"}</p>
             {!!birthday && <p>born {birthday}</p>}
@@ -16,7 +17,7 @@ const ActorCards = ({name,image,gender,country,birthday,deathday}) => {
                 <Link to="/">Read More</Link>
                 <button type="button">Star me</button> 
             </div>
-    </div>
+    </SearchCard>
     );
 }
 export default ActorCards;

@@ -2,6 +2,7 @@ import { useStaredShows } from "../librarycustom/useStaredShow";
 import { useQuery } from "@tanstack/react-query";
 import { getShowByIds } from "../Api/Tvmaze";
 import ShowGrid from "../Component/shows/ShowGrid";
+import { TextCenter } from "../Common/TextCenter";
 
 const Started = ()=>{
     const [staredShowIds] = useStaredShows( );
@@ -12,16 +13,16 @@ const Started = ()=>{
         refetchOnWindowFocus:false,
     });
     if(staredShow?.length === 0){
-        return <div>NO Shows were stared</div>
+        return <TextCenter>NO Shows were stared</TextCenter>
 
     }
     if(staredShow?.length > 0){
         return <ShowGrid shows={staredShow}></ShowGrid>
     }
     if(staredShowError){
-        return <div>Error occured:{staredShowError.message}</div>
+        return <TextCenter>Error occured:{staredShowError.message}</TextCenter>
     }
-    return <div>hello</div>
+    return <TextCenter>shows are lloadinng...</TextCenter>
     
 };
 export default Started;

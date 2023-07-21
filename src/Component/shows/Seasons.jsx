@@ -1,20 +1,56 @@
+import styled from "styled-components";
 const Seasons = ({seasons}) => {
     return(
-        <div>
+        <SeasonsWrapper>
             <p>Total No. Of Seasons :{seasons.length}</p>
             <p>Total Episode : {' '}
             {seasons.reduce((sum, seasons)=> sum + seasons.episodeOrder, 0)}
             </p>
-        <div>
+        <SeasonList>
             {seasons.map(seasons =>
-            (<div key={seasons.id}>
+            (<div key={seasons.id} className="season-item">
+                <div className="left">
             <p>Seasons: {seasons.number}</p>
             <p>Episode:{seasons.episodeOrder}</p>
-            <div> Aired : {seasons.premiereDate} - {seasons.endDate}</div>
+            </div>
+            <div className="right"> 
+            Aired : {' '}
+            <strong>
+            {seasons.premiereDate} - {seasons.endDate}
+            </strong>
+            </div>
             </div>
             ))}
-        </div>
-        </div>
+        </SeasonList>
+        </SeasonsWrapper>
           );
 }
 export default Seasons;
+
+const SeasonsWrapper = styled.div`
+  p {
+    margin: 5px 0;
+  }
+`;
+
+const SeasonList = styled.div`
+  display: flex;
+  flex-direction: column;
+  .season-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .left {
+      flex: 0 0 30%;
+      border-right: 1px solid #b0b0b0;
+      padding-right: 20px;
+    }
+    .right {
+      padding-left: 20px;
+      flex: 1;
+    }
+  }
+`;

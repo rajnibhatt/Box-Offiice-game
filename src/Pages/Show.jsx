@@ -6,6 +6,8 @@ import Details from "../Component/shows/Details";
 import Seasons from "../Component/shows/Seasons";
 import Cast from "../Component/shows/Cast";
 import UseReducer from "../UseReducer";
+import styled from "styled-components";
+import { TextCenter } from "../Common/TextCenter";
 // const useShowById = showId =>{
 //     const [showData,setShowData] = useState(null);
 //     const [showError,setShowError] = useState(null);
@@ -37,13 +39,16 @@ const {data:showData,error:showError} = useQuery({
 // }
 //const {showData,showError} = useShowById(showId);
 if(showError){
-    return <div>we have an error: {showError.message}</div>;
+    return <TextCenter>we have an error: {showError.message}</TextCenter>;
 }
 if(showData){
     return (
-        <div>
+
+        <ShowPageWrapper>
             <UseReducer></UseReducer>
+            <BackHomeWrapper>
             <Link to={"/"}>Go Back To Start</Link>
+            </BackHomeWrapper>
             {/* <button type="button" onClick={onGoBack}>Go Back</button> */}
         <ShowMainData
         image={showData.image}
@@ -54,7 +59,7 @@ if(showData){
         >
 
         </ShowMainData>
-        <div>
+        <InfoBlock>
             <h1>Details</h1>
             <Details
             status = {showData.status}
@@ -63,23 +68,54 @@ if(showData){
             >
 
             </Details>
-        </div>
+        </InfoBlock>
 
-        <div>
+        <InfoBlock>
             <h2>Seasons</h2>
             <Seasons seasons={showData._embedded.seasons}></Seasons>
-        </div>
+        </InfoBlock>
 
-        <div>
+        <InfoBlock>
             <h2>Cast: </h2>
             <Cast cast={showData._embedded.cast}></Cast>
-        </div>
-        </div>
+        </InfoBlock>
+        </ShowPageWrapper>
     );
 
 }
     return(
-        <div>show page for {showId}</div>
+        <TextCenter>show page for {showId}</TextCenter>
     );
 }
 export default Show;
+const BackHomeWrapper = styled.div`
+  margin-bottom: 30px;
+  text-align: left;
+  a {
+    padding: 10px;
+    color: ${({ theme }) => theme.mainColors.dark};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const ShowPageWrapper = styled.div`
+  margin: auto;
+  @media only screen and (min-width: 768px) {
+    max-width: 700px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 900px;
+  }
+`;
+
+const InfoBlock = styled.div`
+  margin-bottom: 40px;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+`;
