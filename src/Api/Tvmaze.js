@@ -6,4 +6,11 @@ const apiGet = async (queryString)=>{
 };
 export const searchForShows = (query) => apiGet(`/search/shows?q=${query}`);
 export const searchForPeople = (query) =>apiGet(`/search/people?q=${query}`);
-export const getShowById = showId => apiGet(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
+export const getShowById = showId => 
+apiGet(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
+export const getShowByIds = async showIds =>{
+    console.log(showIds);
+    const promises = showIds.map(showId =>getShowById(showId));
+    return Promise.all(promises);
+   
+};
