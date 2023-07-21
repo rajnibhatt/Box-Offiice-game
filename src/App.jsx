@@ -4,7 +4,7 @@ import Home from './Pages/Home';
 import Started from './Pages/Stared';
 import MainLayout from './Component/MainLayout';
 import Show from './Pages/Show';
-import './App.css';
+import { GlobalTheme } from './Pages/theme';
 
 const queryClient = new QueryClient();
 
@@ -13,6 +13,7 @@ function App() {
    
    return(
    <QueryClientProvider client={queryClient}>
+      <GlobalTheme>
    <BrowserRouter>
    <Routes>
    <Route element={<MainLayout/>}>
@@ -24,9 +25,12 @@ function App() {
    
    </Routes>
    </BrowserRouter>
+ </GlobalTheme>
    </QueryClientProvider>
 
    );
 }
 
 export default App;
+
+
